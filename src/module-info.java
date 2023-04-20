@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author germain
+ *
+ */
+module ParserQuakeGermain {
+}
