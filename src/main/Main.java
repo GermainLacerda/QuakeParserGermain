@@ -1,9 +1,8 @@
 package main;
 
 import java.io.*;
-import java.util.*;
 
-import controller.Parser;
+import controller.*;
 
 public class Main {
 

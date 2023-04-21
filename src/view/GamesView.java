@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import model.PlayersModel;
 
 public class GamesView {
-	public String printGameInfos(int gameRound, int totalKills, LinkedList<PlayersModel> players,
+	public void printGameInfos(int gameRound, int totalKills, LinkedList<PlayersModel> players,
 			LinkedList<String> kills) {
 
 		String tittle = "game_" + gameRound + " {";
@@ -22,6 +22,6 @@ public class GamesView {
 																								// kills por linha
 		String closeTittle = "\n}";
 
-		return tittle + totalKillsInGame + playersInGame + killsInGame + closeTittle;
+		System.out.println(tittle + totalKillsInGame + playersInGame + killsInGame + closeTittle); 
 	}
 }
