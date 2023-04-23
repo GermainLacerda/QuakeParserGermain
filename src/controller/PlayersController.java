@@ -5,19 +5,19 @@ import java.util.regex.*;
 import model.*;
 
 public class PlayersController {
-	public PlayersModel criarPlayer (String PlayerLine) {
+	public PlayersModel playerCreator (String playerLine) {
 		int playerID;
 		String playerName;
 		String regexID = "^.*ClientUserinfoChanged:\\s*(\\d+).*";
 		String regexName = "n\\\\(.+?)\\\\t";
 		Pattern pattern = Pattern.compile(regexID);
-		Matcher matcher = pattern.matcher(PlayerLine);
+		Matcher matcher = pattern.matcher(playerLine);
 		
 		matcher.find();
 		playerID = Integer.parseInt(matcher.group(1));	
 			
 		pattern = Pattern.compile(regexName);	
-		matcher = pattern.matcher(PlayerLine);
+		matcher = pattern.matcher(playerLine);
 		
 		
 		matcher.find();

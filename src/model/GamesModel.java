@@ -6,13 +6,12 @@ public class GamesModel {
 	private int gameRound;
 	private int totalKills;
 	private LinkedList<PlayersModel> players;
-	private LinkedList<String> kills;
 	
-	public GamesModel (int gameRound, int totalKills, LinkedList<PlayersModel> players, LinkedList<String> kills) {
+	
+	public GamesModel (int gameRound, int totalKills, LinkedList<PlayersModel> players) {
 		this.gameRound = gameRound;
 		this.totalKills = totalKills;
 		this.players = players;
-		this.kills = kills;
 	}
 	
 	public int getGameRound () {
@@ -39,16 +38,5 @@ public class GamesModel {
 		this.players = players;
 	}
 	
-	public LinkedList<String> getKills (){
-		return this.kills;
-	}
-	
-	public void setKills (LinkedList<String> kills) {
-		this.kills = kills;
-	}
-	
-	public String toStringGame (GamesModel gamesmodel) {
-		return "1";//criar e puxar do view a modelagem da visualização do game  
-	}
 	
 }

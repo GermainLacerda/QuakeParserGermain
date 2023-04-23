@@ -29,4 +29,12 @@ public class PlayersModel {
 	public void setPlayerKills (int playerKills) {
 		this.playerKills = playerKills;
 	}
+	
+	@Override
+	public boolean equals (Object obj) {
+		if (this == obj) return true;
+        if (!(obj instanceof PlayersModel)) return false;
+        PlayersModel player = (PlayersModel) obj;
+        return (this.playerID == player.playerID);
+	}
 }
