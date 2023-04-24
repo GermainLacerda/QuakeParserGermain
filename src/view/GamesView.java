@@ -5,12 +5,14 @@ import java.util.LinkedList;
 import model.*;
 
 public class GamesView {
-	public void printGameInfos(int gameRound, int totalKills, LinkedList<PlayersModel> players) {
+	public void printGameInfos(GamesModel game) {
+		
+		
 
-		String tittle = "game_" + gameRound + " {";
-		String totalKillsInGame = "\n	total_kills: " + totalKills + ";";
-		String playersInGame = "\n	Players:" + nameFormater(players);
-		String killsInGame = "\n	Kills: {" +  killFormater(players); 
+		String tittle = "game_" + game.getGameRound() + " {";
+		String totalKillsInGame = "\n	total_kills: " + game.getTotal_kills() + ";";
+		String playersInGame = "\n	Players:" + nameFormater(game.getPlayers());
+		String killsInGame = "\n	Kills: {" +  killFormater(game.getPlayers()); 
 		String closeTittle = "\n}";
 
 		System.out.println(tittle + totalKillsInGame + playersInGame + killsInGame + closeTittle);
@@ -46,10 +48,21 @@ public class GamesView {
 	}
 	
 	public String nameFormater (LinkedList<PlayersModel> players) {
-		return null;
+		String playersName = " ";
+		for (int i = 0; i < players.size()-1; i++) {
+			playersName = playersName + "\""+players.get(i).getPlayerName()+"\", ";
+		}
+		playersName = playersName + "\""+players.get(players.size()-1).getPlayerName()+"\"";
+		return playersName;
 	}
 	
 	public String killFormater (LinkedList<PlayersModel> players) {
-		return null;
+		String playersKills = "\n";
+		playersKills = playersKills + "		\""+players.get(0).getPlayerName()+"\": "+players.get(0).getPlayerKills()+", \n";
+		for (int i = 1; i < players.size()-1; i++) {
+			playersKills = playersKills + "		\""+players.get(i).getPlayerName()+"\": "+players.get(i).getPlayerKills()+", \n";
+		}
+		playersKills = playersKills + "		\""+players.get(players.size()-1).getPlayerName()+"\": "+players.get(players.size()-1).getPlayerKills()+"\n	}";
+		return playersKills;
 	}
 }

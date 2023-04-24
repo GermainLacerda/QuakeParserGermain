@@ -51,14 +51,9 @@ public class Parser {
 						}
 						fileLine = quakeBuffer.readLine();
 					}
-					System.out.println(totalKills);
-					for (int i = 0; i < gamePlayers.size(); i++) {
-						int id = gamePlayers.get(i).getPlayerID();
-					    String nome = gamePlayers.get(i).getPlayerName();
-					    int kills = gamePlayers.get(i).getPlayerKills();
-					    System.out.println(id+" - "+nome +": " + kills);
-					}
+					
 					game = new GamesModel(count, totalKills, gamePlayers);
+					gameDisplaier.printGameInfos(game);
 					
 					if (fileLine.contains("ShutdownGame:")) {
 						System.out.println("O jogo "+count+" acabou");
