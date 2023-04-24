@@ -32,7 +32,7 @@ public class RankingModel {
 		playerList = rankSort(playerList);
 		System.out.println("\n\n\n\n");
 		for(int k = 0; k< playerList.size();k++) {
-			System.out.println(playerList.get(k).getPlayerName() + "     :      " + playerList.get(k).getPlayerKills());
+			System.out.println(playerList.get(k).getPlayerName() + ": " + playerList.get(k).getPlayerKills());
 			
 		}	
 			
