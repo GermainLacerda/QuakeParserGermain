@@ -16,6 +16,8 @@ public class Parser {
 			InputStreamReader quakeStreamRdr = new InputStreamReader(quakeFile);
 			BufferedReader quakeBuffer = new BufferedReader(quakeStreamRdr, 262144);
 			int count = 1;
+			LinkedList<GamesModel> gameList = new LinkedList<>();
+			RankingModel playerRank =new RankingModel();
 			while ((fileLine = quakeBuffer.readLine()) != null) {
 				// System.out.println(fileLine);
 				PlayersController playerBuilder = new PlayersController();
@@ -25,7 +27,6 @@ public class Parser {
 				GamesView gameDisplaier = new GamesView();
 				
 				if (fileLine.contains("InitGame:")) {
-					System.out.println("O jogo "+count+" iniciou");
 					GamesModel game;
 					int totalKills = 0;
 					LinkedList<PlayersModel> gamePlayers = new LinkedList<>();
@@ -36,34 +37,27 @@ public class Parser {
 							PlayersModel player = playerBuilder.playerCreator(fileLine);
 							if (!gamePlayers.contains(player)) {
 								gamePlayers.add(player);
-								System.out.println("jogador entrou na partida");
-								playerDisplaier.printPlayerInfos(playerBuilder.playerCreator(fileLine));
 							}
 							
 						}
 
 						if (fileLine.contains("Kill:")) {
 							totalKills++;
-							LinkedList<Integer> killIDs = gamesBuilder.killingMap(fileLine);// retorna o id de quem matou, quem morreu e como foi morto
+							LinkedList<Integer> killIDs = gamesBuilder.killingMap(fileLine);
 							 gamePlayers = killMath.killInterpreter (gamePlayers, killIDs);
-							//System.out.println("alguma morte aconteceu");
-							//System.out.println(fileLine);
 						}
 						fileLine = quakeBuffer.readLine();
 					}
 					
 					game = new GamesModel(count, totalKills, gamePlayers);
 					gameDisplaier.printGameInfos(game);
-					
-					if (fileLine.contains("ShutdownGame:")) {
-						System.out.println("O jogo "+count+" acabou");
-					}
+					gameList.add(game);
 					count++;
 				}
 				
 
 			}
-			System.out.println(count);
+			playerRank.killRank(gameList);
 			quakeBuffer.close();
 		} catch (FileNotFoundException FNFE) {
 			System.out.println(FNFE.getMessage());

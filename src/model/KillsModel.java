@@ -20,14 +20,12 @@ public class KillsModel {
 			deathDisplaier.printDeathInfos("world", name, killIDs.get(2));
 			
 		}else {
-			int id = 0;
 			String killerName =null;
 			String killedName =null;
 			for (int i = 0; i < playersList.size(); i++) {
-				if (playersList.get(i).getPlayerID() == killIDs.get(0) ) { //pega o id do player que foi matou
+				if (playersList.get(i).getPlayerID() == killIDs.get(0) ) { 
 					killerName = playersList.get(i).getPlayerName();
-					id = playersList.get(i).getPlayerID();
-					playersList.get(i).setPlayerKills(playersList.get(i).getPlayerKills()+1); //adiciona uma kill a quem matou
+					playersList.get(i).setPlayerKills(playersList.get(i).getPlayerKills()+1); 
 					
 				}
 				if(playersList.get(i).getPlayerID() == killIDs.get(1)){
